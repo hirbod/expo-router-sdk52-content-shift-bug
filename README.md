@@ -2,7 +2,7 @@
 
 I discovered a strange bug in SDK52 and managed to reproduce it. Notably, this issue doesn't occur when using React Navigation v7 directly.
 
-<video src="video.mp4" controls width="250">
+<video src="https://github.com/hirbod/expo-router-sdk52-content-shift-bug/blob/main/video.mp4" controls width="250">
   Your browser does not support the video tag.
 </video>
 
