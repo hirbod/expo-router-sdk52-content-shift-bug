@@ -1,50 +1,19 @@
-# Welcome to your Expo app 👋
+### Weird SDK52 Bug Report
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+I discovered a strange bug in SDK52 and managed to reproduce it. Notably, this issue doesn't occur when using React Navigation v7 directly.
 
-## Get started
+<video src="video.mp4" controls width="250">
+  Your browser does not support the video tag.
+</video>
 
-1. Install dependencies
+#### Bug Description
 
-   ```bash
-   npm install
-   ```
+- **Scenario**: Navigating from a screen without a header to a screen with a header.
+- **Conditions**:
+  1. The target screen contains a `ScrollView`.
+  2. Interaction with the `ScrollView` causes a layout shift whenever navigating to the target screen.
 
-2. Start the app
+Initially, I suspected the issue might be related to `react-native-screens`. However, after further testing, I could only reproduce this bug when using **Expo Router** and not with any other configuration.
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Here is a proof that it works fine with React Navigation v7:
+https://snack.expo.dev/@hirbod/native-stack-navigator-header-to-non-header
